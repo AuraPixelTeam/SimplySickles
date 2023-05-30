@@ -13,11 +13,11 @@ class Particle {
 	public static function sendSweepParticle(Player $player, Position $position) : void {
 		$player->getNetworkSession()->sendDataPacket(
 			SpawnParticleEffectPacket::create(
-				DimensionIds::OVERWORLD,
-				-1,
-				$position->asVector3(),
-				"sickle:sweep",
-				null
+				dimensionId: DimensionIds::OVERWORLD,
+				actorUniqueId: -1,
+				position: $position->asVector3(),
+				particleName: "sickle:sweep",
+				molangVariablesJson: "{}",
 			)
 		);
 	}

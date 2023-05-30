@@ -8,6 +8,7 @@ use pocketmine\math\Vector3;
 use function abs;
 
 class Math {
+	/** @return array<Vector3> */
 	public static function makePlusSign(Vector3 $position) : array {
 		[$x, $y, $z] = [$position->getX(), $position->getY(), $position->getZ()];
 		return [
