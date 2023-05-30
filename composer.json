@@ -41,5 +41,10 @@
         "jasonw4331/libcustompack": "^1.0",
         "pocketmine/pocketmine-mp": "4.0.0",
         "customiesdevs/customies": "^1.2"
-    }
+    },
+	 "config": {
+      "allow-plugins": {
+         "phpstan/extension-installer": true
+      }
+   }
 }
