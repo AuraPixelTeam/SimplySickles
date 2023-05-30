@@ -20,7 +20,6 @@ use function str_replace;
 use function ucwords;
 
 class SimplySickles extends PluginBase {
-
 	private static ?ResourcePack $pack;
 
 	protected function onEnable() : void {
