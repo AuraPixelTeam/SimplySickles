@@ -15,6 +15,7 @@ use taylordevs\SimplySickles\item\Diamond_Sickle;
 use taylordevs\SimplySickles\item\Golden_Sickle;
 use taylordevs\SimplySickles\item\Iron_Sickle;
 use taylordevs\SimplySickles\item\Netherite_Sickle;
+use taylordevs\SimplySickles\listener\EventListener;
 use function mb_strtolower;
 use function str_replace;
 use function ucwords;
@@ -24,6 +25,7 @@ class SimplySickles extends PluginBase {
 
 	protected function onEnable() : void {
 		libCustomPack::registerResourcePack(self::$pack = libCustomPack::generatePackFromResources($this));
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 
 		$itemFactory = CustomiesItemFactory::getInstance();
 		$namespace = mb_strtolower($this->getName() . ":");

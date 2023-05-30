@@ -8,10 +8,15 @@ use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\block\Block;
+use pocketmine\block\VanillaBlocks;
+use pocketmine\block\Wheat;
 use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
+use pocketmine\item\VanillaItems;
+use pocketmine\math\Vector3;
+use taylordevs\SimplySickles\math\Math;
 
-final class Golden_Sickle extends Item implements ItemComponents {
+final class Golden_Sickle extends Item implements ItemComponents, Sickle {
 	use ItemComponentsTrait;
 
 	private static int $ATTACK_POINTS = 3;
@@ -40,7 +45,17 @@ final class Golden_Sickle extends Item implements ItemComponents {
 	}
 
 	public function onDestroyBlock(Block $block) : bool {
-		// TODO: Implement sickles feature
+		$position = $block->getPosition();
+		$world = $position->getWorld();
+		$world->setBlock($position, VanillaBlocks::WHEAT());
+		$area = Math::makeSquare($position);
+		foreach ($area as $pos) {
+			$block = $world->getBlock($pos);
+			if ($block instanceof Wheat) {
+				$world->setBlock($pos, VanillaBlocks::WHEAT());
+				$world->dropItem(new Vector3($pos->getX(), $pos->getY(), $pos->getZ()), VanillaItems::WHEAT());
+			}
+		}
 		return true;
 	}
 }
