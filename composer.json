@@ -1,50 +1,50 @@
 {
-    "name": "taylordevs/simplysickles",
-    "description": "a plugin for PMMP that simply adds sickles",
-    "type": "project",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Taylordevs\\Simplysickles\\": "src/"
+  "name": "taylordevs/simplysickles",
+  "description": "a plugin for PMMP that simply adds sickles",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Taylordevs\\Simplysickles\\": "src/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "customiesdevs/customies",
+        "version": "1.2.0",
+        "source": {
+          "url": "https://github.com/CustomiesDevs/Customies.git",
+          "type": "git",
+          "reference": "master"
+        },
+        "autoload": {
+          "psr-4": {
+            "customiesdevs\\customies\\": "src/"
+          }
         }
-    },
-	"repositories": [
-		{
-			"type": "package",
-			"package": {
-				"name": "customiesdevs/customies",
-				"version": "1.2.0",
-				"source": {
-					"url": "https://github.com/CustomiesDevs/Customies.git",
-					"type": "git",
-					"reference": "master"
-				},
-				"autoload": {
-					"psr-4": {
-						"customiesdevs\\customies\\": "src/"
-					}
-				}
-			}
-		}
-	],
-    "authors": [
-        {
-            "name": "taylordevs",
-			"email": "nguyenhieucoder47@gmail.com"
-        }
-    ],
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.17",
-        "phpstan/phpstan": "^1.10"
-    },
-    "require": {
-        "jasonw4331/libcustompack": "^1.0",
-        "pocketmine/pocketmine-mp": "4.0.0",
-        "customiesdevs/customies": "^1.2"
-    },
-	 "config": {
-      "allow-plugins": {
-         "phpstan/extension-installer": true
       }
-   }
+    }
+  ],
+  "authors": [
+    {
+      "name": "taylordevs",
+      "email": "nguyenhieucoder47@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.17",
+    "phpstan/phpstan": "^1.10"
+  },
+  "require": {
+    "jasonw4331/libcustompack": "^1.0",
+    "pocketmine/pocketmine-mp": "4.0.0",
+    "customiesdevs/customies": "^1.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  }
 }
