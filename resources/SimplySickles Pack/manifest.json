@@ -1,0 +1,37 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "SimplySickles",
+		"description": "Simply Sickles Plugin Resources",
+		"version": [
+			1,
+			0,
+			0
+		],
+		"min_engine_version": [
+			1,
+			19,
+			60
+		],
+		"uuid": "3f2182a4-fe9e-11ed-be56-0242ac120002"
+	},
+	"modules": [
+		{
+			"description": "Simply Sickles Plugin Resources",
+			"type": "resources",
+			"uuid": "3f2187cc-fe9e-11ed-be56-0242ac120002",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	 "metadata": {
+        "authors": [
+            "taylordevs"
+        ],
+        "license": "mit",
+        "url": "https://github.com/Taylor-pm-pl/Simply-Sickles"
+    }
+}

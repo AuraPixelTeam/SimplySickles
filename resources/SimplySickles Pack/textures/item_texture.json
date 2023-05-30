@@ -1,0 +1,18 @@
+{
+	"resource_pack_name": "simplysickles",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"iron_sickle": {
+			"textures": "textures/items/iron_sickle"
+		},
+		"golden_sickle": {
+			"textures": "textures/items/golden_sickle"
+		},
+		"diamond_sickle": {
+			"textures": "textures/items/diamond_sickle"
+		},
+		"netherite_sickle": {
+			"textures": "textures/items/netherite_sickle"
+		}
+	}
+}

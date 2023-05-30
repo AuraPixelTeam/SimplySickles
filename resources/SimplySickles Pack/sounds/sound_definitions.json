@@ -1,0 +1,16 @@
+{
+	"format_version": "1.14.0",
+	"sound_definitions": {
+		"sickle.sweep": {
+			"sounds": [
+				"sounds/mob/player/sweep1",
+				"sounds/mob/player/sweep2",
+				"sounds/mob/player/sweep3",
+				"sounds/mob/player/sweep4",
+				"sounds/mob/player/sweep5",
+				"sounds/mob/player/sweep6",
+				"sounds/mob/player/sweep7"
+			]
+		}
+	}
+}
