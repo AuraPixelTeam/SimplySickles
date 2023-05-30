@@ -50,7 +50,7 @@ final class Netherite_Sickle extends Item implements ItemComponents, Sickle {
 		$world = $position->getWorld();
 		$world->setBlock($position, VanillaBlocks::WHEAT());
 		$area = Math::makeSquareV2($position);
-        /** @var Vector3 $pos */
+		/** @var Vector3 $pos */
 		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			if ($block instanceof Wheat) {
