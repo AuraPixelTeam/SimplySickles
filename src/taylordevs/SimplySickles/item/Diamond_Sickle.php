@@ -51,6 +51,7 @@ final class Diamond_Sickle extends Item implements ItemComponents, Sickle {
 		$world = $position->getWorld();
 		$world->setBlock($position, VanillaBlocks::WHEAT());
 		$area = Math::makeRhobus($position);
+        /** @var Vector3 $pos */
 		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			if ($block instanceof Wheat) {

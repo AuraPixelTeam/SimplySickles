@@ -49,7 +49,8 @@ final class Iron_Sickle extends Item implements ItemComponents, Sickle {
 		$world = $position->getWorld();
 		$world->setBlock($position, VanillaBlocks::WHEAT());
 		$area = Math::makePlusSign($position);
-		foreach ($area as $pos) {
+        /** @var Vector3 $pos */
+        foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			if ($block instanceof Wheat) {
 				$world->setBlock($pos, VanillaBlocks::WHEAT());
