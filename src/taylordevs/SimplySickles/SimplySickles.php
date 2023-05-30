@@ -62,8 +62,8 @@ class SimplySickles extends PluginBase {
 	}
 
 	protected function onDisable() : void {
-        if (self::$pack instanceof ResourcePack) {
-            libCustomPack::unregisterResourcePack(self::$pack);
-        }
+		if (self::$pack instanceof ResourcePack) {
+			libCustomPack::unregisterResourcePack(self::$pack);
+		}
 	}
 }
