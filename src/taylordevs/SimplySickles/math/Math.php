@@ -33,15 +33,13 @@ class Math {
 
 	public static function makeRhobus(Vector3 $position) : \Generator {
 		[$x, $y, $z] = [$position->getX(), $position->getY(), $position->getZ()];
-		$offsets = [-1, 0, 1];
+		$offsets = [-2, -1, 0, 1, 2];
 
 		foreach ($offsets as $xOffset) {
 			foreach ($offsets as $zOffset) {
-				if ($xOffset === 0 && $zOffset === 0) {
-					continue;
+				if (abs($xOffset) + abs($zOffset) <= 2) {
+					yield new Vector3($x + $xOffset, $y, $z + $zOffset);
 				}
-
-				yield new Vector3($x + $xOffset, $y, $z + $zOffset);
 			}
 		}
 	}
