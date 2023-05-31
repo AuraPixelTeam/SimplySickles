@@ -8,6 +8,7 @@ use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\block\Block;
+use pocketmine\entity\Entity;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\Tool;
 use pocketmine\math\Vector3;
@@ -31,17 +32,12 @@ final class Diamond_Sickle extends Tool implements ItemComponents, Sickle {
 	}
 
 
-	public function getAttackPoints() : int {
-		return self::$ATTACK_POINTS;
-	}
-
-	public function getDamage() : int {
-		return self::$ATTACK_POINTS;
-	}
-
-
 	public function getMaxDurability() : int {
 		return 1650;
+	}
+
+	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
+		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 
 	public function onDestroyBlock(Block $block) : bool {
