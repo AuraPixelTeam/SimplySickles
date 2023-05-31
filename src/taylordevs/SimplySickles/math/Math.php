@@ -31,7 +31,7 @@ class Math {
 		}
 	}
 
-	public static function makeRhobus(Vector3 $position) : \Generator {
+	public static function makeRhombus(Vector3 $position) : \Generator {
 		[$x, $y, $z] = [$position->getX(), $position->getY(), $position->getZ()];
 		$offsets = [-2, -1, 0, 1, 2];
 

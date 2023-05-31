@@ -50,7 +50,7 @@ final class Diamond_Sickle extends Tool implements ItemComponents, Sickle {
 	public function onDestroyBlock(Block $block) : bool {
 		$position = $block->getPosition();
 		$world = $position->getWorld();
-		$area = Math::makeRhobus($position);
+		$area = Math::makeRhombus($position);
 		/** @var Vector3 $pos */
 		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
