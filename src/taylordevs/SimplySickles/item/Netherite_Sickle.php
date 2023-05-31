@@ -8,15 +8,16 @@ use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\block\Block;
+use pocketmine\block\Crops;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\block\Wheat;
-use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
+use pocketmine\item\Tool;
 use pocketmine\item\VanillaItems;
 use pocketmine\math\Vector3;
 use taylordevs\SimplySickles\math\Math;
 
-final class Netherite_Sickle extends Item implements ItemComponents, Sickle {
+final class Netherite_Sickle extends Tool implements ItemComponents, Sickle {
 	use ItemComponentsTrait;
 
 	private static int $ATTACK_POINTS = 6;
@@ -48,14 +49,15 @@ final class Netherite_Sickle extends Item implements ItemComponents, Sickle {
 	public function onDestroyBlock(Block $block) : bool {
 		$position = $block->getPosition();
 		$world = $position->getWorld();
-		$world->setBlock($position, VanillaBlocks::WHEAT());
 		$area = Math::makeSquareV2($position);
 		/** @var Vector3 $pos */
 		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			if ($block instanceof Wheat) {
 				$world->setBlock($pos, VanillaBlocks::WHEAT());
-				$world->dropItem(new Vector3($pos->getX(), $pos->getY(), $pos->getZ()), VanillaItems::WHEAT());
+				if ($block->getAge() >= Crops::MAX_AGE) {
+					$world->dropItem(new Vector3($pos->getX(), $pos->getY(), $pos->getZ()), VanillaItems::WHEAT());
+				}
 			}
 		}
 		return true;
