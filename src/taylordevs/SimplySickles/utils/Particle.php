@@ -16,7 +16,8 @@ class Particle {
 				dimensionId: DimensionIds::OVERWORLD,
 				actorUniqueId: -1,
 				position: $position->asVector3(),
-				particleName: "sickle:sweep"
+				particleName: "sickle:sweep",
+                molangVariablesJson: null
 			)
 		);
 	}
