@@ -46,11 +46,12 @@ class Math {
 
 	public static function makeSquareV2(Vector3 $position) : \Generator {
 		[$x, $y, $z] = [$position->getX(), $position->getY(), $position->getZ()];
+		$offsets = [-2, -1, 0, 1, 2];
 
-		for ($i = $x - 2; $i <= $x + 2; $i++) {
-			for ($j = $z - 2; $j <= $z + 2; $j++) {
-				if (abs($i - $x) === 2 || abs($j - $z) === 2) {
-					yield new Vector3($i, $y, $j);
+		foreach ($offsets as $xOffset) {
+			foreach ($offsets as $zOffset) {
+				if (abs($xOffset) + abs($zOffset) <= 3) {
+					yield new Vector3($x + $xOffset, $y, $z + $zOffset);
 				}
 			}
 		}
