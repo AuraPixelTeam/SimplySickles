@@ -7,6 +7,11 @@ namespace taylordevs\SimplySickles;
 use customiesdevs\customies\item\CustomiesItemFactory;
 use libCustomPack\libCustomPack;
 use pocketmine\crafting\ShapedRecipe;
+use pocketmine\crafting\ShapelessRecipe;
+use pocketmine\inventory\CreativeInventory;
+use pocketmine\item\Item;
+use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIdentifier;
 use pocketmine\item\StringToItemParser;
 use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
@@ -22,6 +27,8 @@ use function ucwords;
 
 class SimplySickles extends PluginBase {
 	private static ?ResourcePack $pack;
+
+	const NETHERITE_INGOT_ID = 742;
 
 	protected function onEnable() : void {
 		libCustomPack::registerResourcePack(self::$pack = libCustomPack::generatePackFromResources($this));
@@ -61,6 +68,10 @@ class SimplySickles extends PluginBase {
 				]
 			));
 		}
+		ItemFactory::getInstance()->register(new Item(new ItemIdentifier(self::NETHERITE_INGOT_ID, 0), 'Netherite Ingot'));
+		StringToItemParser::getInstance()->register('netherite_ingot', fn(string $input) => ItemFactory::getInstance()->get(self::NETHERITE_INGOT_ID));
+		CreativeInventory::getInstance()->add(ItemFactory::getInstance()->get(self::NETHERITE_INGOT_ID));
+		$craftManager->registerShapelessRecipe(new ShapelessRecipe([$itemFactory->get($namespace . "diamond_sickle"), ItemFactory::getInstance()->get(self::NETHERITE_INGOT_ID)], [$itemFactory->get($namespace . "netherite_sickle")]));
 	}
 
 	protected function onDisable() : void {
