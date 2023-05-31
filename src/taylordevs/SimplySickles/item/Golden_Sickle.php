@@ -8,14 +8,11 @@ use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\block\Block;
-use pocketmine\block\Crops;
-use pocketmine\block\VanillaBlocks;
-use pocketmine\block\Wheat;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\Tool;
-use pocketmine\item\VanillaItems;
 use pocketmine\math\Vector3;
 use taylordevs\SimplySickles\math\Math;
+use taylordevs\SimplySickles\utils\Utils;
 
 final class Golden_Sickle extends Tool implements ItemComponents, Sickle {
 	use ItemComponentsTrait;
@@ -49,15 +46,11 @@ final class Golden_Sickle extends Tool implements ItemComponents, Sickle {
 		$position = $block->getPosition();
 		$world = $position->getWorld();
 		$area = Math::makeSquare($position);
+		Utils::autoRefill($block, $position, $world);
 		/** @var Vector3 $pos */
 		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
-			if ($block instanceof Wheat) {
-				$world->setBlock($pos, VanillaBlocks::WHEAT());
-				if ($block->getAge() >= Crops::MAX_AGE) {
-					$world->dropItem(new Vector3($pos->getX(), $pos->getY(), $pos->getZ()), VanillaItems::WHEAT());
-				}
-			}
+			Utils::autoRefill($block, $pos, $world);
 		}
 		return true;
 	}

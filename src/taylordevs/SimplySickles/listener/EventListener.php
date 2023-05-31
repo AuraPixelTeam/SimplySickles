@@ -16,6 +16,7 @@ class EventListener implements Listener {
 		if ($item instanceof Sickle) {
 			Sound::sendSweepSound($event->getPlayer(), $event->getBlock()->getPosition());
 			Particle::sendSweepParticle($event->getPlayer(), $event->getBlock()->getPosition());
+			$event->setDrops([]);
 		}
 	}
 }
