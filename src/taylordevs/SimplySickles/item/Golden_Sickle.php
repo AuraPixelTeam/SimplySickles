@@ -35,7 +35,7 @@ final class Golden_Sickle extends Tool implements ItemComponents, Sickle {
 		return 75;
 	}
 
-	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
+	public function onAttackEntity(Entity $victim) : bool {
 		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 

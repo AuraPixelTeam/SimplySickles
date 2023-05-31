@@ -36,7 +36,7 @@ final class Netherite_Sickle extends Tool implements ItemComponents, Sickle {
 		return 2100;
 	}
 
-	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
+	public function onAttackEntity(Entity $victim) : bool {
 		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 

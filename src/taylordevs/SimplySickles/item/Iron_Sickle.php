@@ -35,7 +35,7 @@ final class Iron_Sickle extends Tool implements ItemComponents, Sickle {
 		return 275;
 	}
 
-	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
+	public function onAttackEntity(Entity $victim) : bool {
 		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 

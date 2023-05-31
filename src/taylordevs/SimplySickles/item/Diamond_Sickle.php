@@ -36,7 +36,7 @@ final class Diamond_Sickle extends Tool implements ItemComponents, Sickle {
 		return 1650;
 	}
 
-	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
+	public function onAttackEntity(Entity $victim) : bool {
 		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 
