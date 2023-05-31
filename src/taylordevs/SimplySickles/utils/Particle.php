@@ -17,7 +17,7 @@ class Particle {
 				actorUniqueId: -1,
 				position: $position->asVector3(),
 				particleName: "sickle:sweep",
-                molangVariablesJson: null
+				molangVariablesJson: null
 			)
 		);
 	}
