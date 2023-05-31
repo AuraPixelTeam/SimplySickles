@@ -39,8 +39,8 @@
   },
   "require": {
     "jasonw4331/libcustompack": "^1.0",
-    "pocketmine/pocketmine-mp": "4.0.0",
-    "customiesdevs/customies": "^1.2"
+    "customiesdevs/customies": "^1.2",
+    "pocketmine/pocketmine-mp": "4.21.0"
   },
   "config": {
     "allow-plugins": {
