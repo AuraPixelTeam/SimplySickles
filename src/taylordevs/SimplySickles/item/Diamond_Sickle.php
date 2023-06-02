@@ -9,6 +9,7 @@ use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
 use pocketmine\block\Block;
 use pocketmine\entity\Entity;
+use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\Tool;
 use pocketmine\math\Vector3;
@@ -44,17 +45,26 @@ final class Diamond_Sickle extends Tool implements ItemComponents, Sickle {
 		return self::$ATTACK_POINTS;
 	}
 
-	public function onAttackEntity(Entity $victim) : bool {
+    /**
+     * @param Entity $victim
+     * @param array<Item> $returnedItems
+     * @return bool
+     */
+	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
 		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 
-	public function onDestroyBlock(Block $block) : bool {
+    /**
+     * @param Block $block
+     * @param array<Item> $returnedItems
+     * @return bool
+     */
+	public function onDestroyBlock(Block $block, array &$returnedItems) : bool {
 		$position = $block->getPosition();
 		$world = $position->getWorld();
 		$area = Math::makeRhombus($position);
 		Utils::autoRefill($block, $position, $world);
-		/** @var Vector3 $pos */
-		foreach ($area as $pos) {
+        foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			Utils::autoRefill($block, $pos, $world);
 		}
