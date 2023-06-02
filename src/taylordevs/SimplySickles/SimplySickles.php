@@ -7,7 +7,6 @@ namespace taylordevs\SimplySickles;
 use customiesdevs\customies\item\CustomiesItemFactory;
 use libCustomPack\libCustomPack;
 use pocketmine\crafting\ExactRecipeIngredient;
-use pocketmine\crafting\RecipeIngredient;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\crafting\ShapelessRecipeType;
@@ -21,7 +20,6 @@ use taylordevs\SimplySickles\item\Iron_Sickle;
 use taylordevs\SimplySickles\item\Netherite_Sickle;
 use taylordevs\SimplySickles\listener\EventListener;
 use function mb_strtolower;
-use function MongoDB\BSON\toJSON;
 use function str_replace;
 use function ucwords;
 
@@ -57,20 +55,20 @@ class SimplySickles extends PluginBase {
 					'  A',
 					'CA '
 				],
-                [
-                    'A' => new ExactRecipeIngredient($item),
-                    'C' => new ExactRecipeIngredient(VanillaItems::STICK())
-                ],
 				[
-                    'A' => $itemFactory->get($namespace . $name)
-                ]
+					'A' => new ExactRecipeIngredient($item),
+					'C' => new ExactRecipeIngredient(VanillaItems::STICK())
+				],
+				[
+					'A' => $itemFactory->get($namespace . $name)
+				]
 			));
 		}
 		$craftManager->registerShapelessRecipe(new ShapelessRecipe(
-            [
-                new ExactRecipeIngredient($itemFactory->get($namespace . "diamond_sickle")),
-                new ExactRecipeIngredient(VanillaItems::NETHERITE_INGOT())
-            ],
+			[
+				new ExactRecipeIngredient($itemFactory->get($namespace . "diamond_sickle")),
+				new ExactRecipeIngredient(VanillaItems::NETHERITE_INGOT())
+			],
 			[
 				$itemFactory->get($namespace . "netherite_sickle")
 			],
