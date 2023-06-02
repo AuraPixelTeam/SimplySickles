@@ -44,20 +44,16 @@ final class Iron_Sickle extends Tool implements ItemComponents, Sickle {
 		return self::$ATTACK_POINTS;
 	}
 
-    /**
-     * @param Entity $victim
-     * @param array<Item> $returnedItems
-     * @return bool
-     */
+	/**
+	 * @param array<Item> $returnedItems
+	 */
 	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
 		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 
-    /**
-     * @param Block $block
-     * @param array<Item> $returnedItems
-     * @return bool
-     */
+	/**
+	 * @param array<Item> $returnedItems
+	 */
 	public function onDestroyBlock(Block $block, array &$returnedItems) : bool {
 		$position = $block->getPosition();
 		$world = $position->getWorld();

@@ -12,7 +12,6 @@ use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\Tool;
-use pocketmine\math\Vector3;
 use taylordevs\SimplySickles\math\Math;
 use taylordevs\SimplySickles\utils\Utils;
 
@@ -44,26 +43,22 @@ final class Golden_Sickle extends Tool implements ItemComponents, Sickle {
 		return self::$ATTACK_POINTS;
 	}
 
-    /**
-     * @param Entity $victim
-     * @param array<Item> $returnedItems
-     * @return bool
-     */
+	/**
+	 * @param array<Item> $returnedItems
+	 */
 	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
 		return $this->applyDamage(self::$ATTACK_POINTS);
 	}
 
-    /**
-     * @param Block $block
-     * @param array<Item> $returnedItems
-     * @return bool
-     */
+	/**
+	 * @param array<Item> $returnedItems
+	 */
 	public function onDestroyBlock(Block $block, array &$returnedItems) : bool {
 		$position = $block->getPosition();
 		$world = $position->getWorld();
 		$area = Math::makeSquare($position);
 		Utils::autoRefill($block, $position, $world);
-        foreach ($area as $pos) {
+		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			Utils::autoRefill($block, $pos, $world);
 		}

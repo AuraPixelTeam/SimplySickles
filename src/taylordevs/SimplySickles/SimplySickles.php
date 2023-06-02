@@ -64,15 +64,15 @@ class SimplySickles extends PluginBase {
 			));
 		}
 		$craftManager->registerShapelessRecipe(new ShapelessRecipe(
-            [
-            $itemFactory->get($namespace . "diamond_sickle"),
-            VanillaItems::NETHERITE_INGOT()
-            ],
-            [
-                $itemFactory->get($namespace . "netherite_sickle")
-            ],
-            ShapelessRecipeType::SMITHING()
-        ));
+			[
+				$itemFactory->get($namespace . "diamond_sickle"),
+				VanillaItems::NETHERITE_INGOT()
+			],
+			[
+				$itemFactory->get($namespace . "netherite_sickle")
+			],
+			ShapelessRecipeType::SMITHING()
+		));
 	}
 
 	protected function onDisable() : void {
