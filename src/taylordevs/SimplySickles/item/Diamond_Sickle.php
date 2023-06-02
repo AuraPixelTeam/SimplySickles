@@ -60,7 +60,7 @@ final class Diamond_Sickle extends Tool implements ItemComponents, Sickle {
 		$world = $position->getWorld();
 		$area = Math::makeRhombus($position);
 		Utils::autoRefill($block, $position, $world);
-        /** @var Vector3 $pos */
+		/** @var Vector3 $pos */
 		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			Utils::autoRefill($block, $pos, $world);
