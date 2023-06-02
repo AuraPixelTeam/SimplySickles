@@ -12,6 +12,7 @@ use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\Tool;
+use pocketmine\math\Vector3;
 use taylordevs\SimplySickles\math\Math;
 use taylordevs\SimplySickles\utils\Utils;
 
@@ -58,6 +59,7 @@ final class Golden_Sickle extends Tool implements ItemComponents, Sickle {
 		$world = $position->getWorld();
 		$area = Math::makeSquare($position);
 		Utils::autoRefill($block, $position, $world);
+        /** @var Vector3 $pos */
 		foreach ($area as $pos) {
 			$block = $world->getBlock($pos);
 			Utils::autoRefill($block, $pos, $world);

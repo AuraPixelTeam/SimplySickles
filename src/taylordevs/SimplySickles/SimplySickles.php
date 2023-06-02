@@ -11,6 +11,7 @@ use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\crafting\ShapelessRecipeType;
 use pocketmine\item\StringToItemParser;
 use pocketmine\item\VanillaItems;
+use pocketmine\crafting\RecipeIngredient;
 use pocketmine\plugin\PluginBase;
 use pocketmine\resourcepacks\ResourcePack;
 use taylordevs\SimplySickles\item\Diamond_Sickle;
@@ -48,26 +49,33 @@ class SimplySickles extends PluginBase {
 			"golden_sickle" => VanillaItems::GOLD_INGOT(),
 			"diamond_sickle" => VanillaItems::DIAMOND()
 		] as $name => $item) {
-			$craftManager->registerShapedRecipe(new ShapedRecipe(
-				[
-					' AA',
-					'  A',
-					'CA '
-				],
-				[
-					'A' => $item,
-					'C' => VanillaItems::STICK()
-				],
-				[
-					'A' => $itemFactory->get($namespace . $name)
-				]
-			));
-		}
+            /** @var RecipeIngredient[] $ingredients */
+            $ingredients = [
+                'A' => $item,
+                'C' => VanillaItems::STICK()
+            ];
+            $result = [
+                'A' => $itemFactory->get($namespace . $name)
+            ];
+
+            $craftManager->registerShapedRecipe(new ShapedRecipe(
+                [
+                    ' AA',
+                    '  A',
+                    'CA '
+                ],
+                $ingredients,
+                $result
+            ));
+
+        }
+        /** @var RecipeIngredient[] $ingredients */
+        $ingredients = [
+            $itemFactory->get($namespace . "diamond_sickle"),
+            VanillaItems::NETHERITE_INGOT()
+        ];
 		$craftManager->registerShapelessRecipe(new ShapelessRecipe(
-			[
-				$itemFactory->get($namespace . "diamond_sickle"),
-				VanillaItems::NETHERITE_INGOT()
-			],
+            $ingredients,
 			[
 				$itemFactory->get($namespace . "netherite_sickle")
 			],
