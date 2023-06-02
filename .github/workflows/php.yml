@@ -13,11 +13,11 @@ jobs:
     strategy:
       matrix:
         image: [ubuntu-20.04]
-        php: [8.1.19, 8.2.6]
+        php: ["8.1", "8.2"]
 
     steps:
       - name: Build and prepare PHP cache
-        uses: pmmp/setup-php-action@c7fb29d83535320922068087c7285bdedbbfa3c2
+        uses: pmmp/setup-php-action@2.0.0
         with:
           php-version: ${{ matrix.php }}
           install-path: "./bin"
@@ -31,22 +31,17 @@ jobs:
       fail-fast: false
       matrix:
         image: [ubuntu-20.04]
-        php: [8.1.19, 8.2.6]
+        php: ["8.1", "8.2"]
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup PHP
-        uses: pmmp/setup-php-action@c7fb29d83535320922068087c7285bdedbbfa3c2
+        uses: pmmp/setup-php-action@2.0.0
         with:
           php-version: ${{ matrix.php }}
           install-path: "./bin"
-
-      - name: Update Composer
-        run: composer update
-
-      - name: Install Composer
-        run: curl -sS https://getcomposer.org/installer | php
+          pm-version-major: "5"
 
       - name: Restore Composer package cache
         uses: actions/cache@v2
@@ -58,8 +53,7 @@ jobs:
           restore-keys: |
             composer-v2-cache-
       - name: Install Composer dependencies
-        run: php composer.phar install --prefer-dist --no-interaction
-
+        run: composer install --prefer-dist --no-interaction
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyze --no-progress --memory-limit=2G
 
