@@ -1,6 +1,6 @@
 name: SimplySickles
-version: 1.0.0
-api: 4.0.0
+version: 2.0.0
+api: 5.0.0
 main: taylordevs\SimplySickles\SimplySickles
 author: taylordevs
 description: a plugin for PMMP that simply adds sickles
