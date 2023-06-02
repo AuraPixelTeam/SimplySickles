@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c032f9c1bf0976cde3c14bc4927f35a6",
+    "content-hash": "f106381400a5b0832e0f48f9c44a077d",
     "packages": [
         {
             "name": "adhocore/json-comment",
@@ -126,7 +126,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CustomiesDevs/Customies.git",
-                "reference": "feature/pm5"
+                "reference": "master"
             },
             "type": "library",
             "autoload": {
