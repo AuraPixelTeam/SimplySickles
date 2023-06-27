@@ -25,4 +25,3 @@
 
 - If you found bugs or want to give suggestions, please visit <a href="https://github.com/Taylor-pm-pl/SimplySickles/issues">here</a> or join our Discord server.
 - We accept all contributions! If you want to contribute, please make a pull request in <a href="https://github.com/Taylor-pm-pl/SimplySickles/pulls">here</a>.
- 
