@@ -16,55 +16,63 @@ use pocketmine\math\Vector3;
 use taylordevs\SimplySickles\math\Math;
 use taylordevs\SimplySickles\utils\Utils;
 
-final class Diamond_Sickle extends Tool implements ItemComponents, Sickle {
-	use ItemComponentsTrait;
+final class Diamond_Sickle extends Tool implements ItemComponents, Sickle
+{
+    use ItemComponentsTrait;
 
-	private static int $ATTACK_POINTS = 5;
-
-
-	public function __construct(ItemIdentifier $identifier, string $name = "Diamond Sickle") {
-		parent::__construct($identifier, $name);
-		$this->initComponent("diamond_sickle", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_ITEMS, CreativeInventoryInfo::NONE));
-	}
+    private static int $ATTACK_POINTS = 5;
 
 
-	public function getMaxStackSize() : int {
-		return 1;
-	}
+    public function __construct(ItemIdentifier $identifier, string $name = "Diamond Sickle")
+    {
+        parent::__construct($identifier, $name);
+        $this->initComponent("diamond_sickle", new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_ITEMS, CreativeInventoryInfo::NONE));
+    }
 
 
-	public function getMaxDurability() : int {
-		return 1650;
-	}
+    public function getMaxStackSize(): int
+    {
+        return 1;
+    }
 
-	public function getAttackPoints() : int {
-		return self::$ATTACK_POINTS;
-	}
 
-	public function getDamage() : int {
-		return self::$ATTACK_POINTS;
-	}
+    public function getMaxDurability(): int
+    {
+        return 1650;
+    }
 
-	/**
-	 * @param array<Item> $returnedItems
-	 */
-	public function onAttackEntity(Entity $victim, array &$returnedItems) : bool {
-		return $this->applyDamage(self::$ATTACK_POINTS);
-	}
+    public function getAttackPoints(): int
+    {
+        return self::$ATTACK_POINTS;
+    }
 
-	/**
-	 * @param array<Item> $returnedItems
-	 */
-	public function onDestroyBlock(Block $block, array &$returnedItems) : bool {
-		$position = $block->getPosition();
-		$world = $position->getWorld();
-		$area = Math::makeRhombus($position);
-		Utils::autoRefill($block, $position, $world);
-		/** @var Vector3 $pos */
-		foreach ($area as $pos) {
-			$block = $world->getBlock($pos);
-			Utils::autoRefill($block, $pos, $world);
-		}
-		return true;
-	}
+    public function getDamage(): int
+    {
+        return self::$ATTACK_POINTS;
+    }
+
+    /**
+     * @param array<Item> $returnedItems
+     */
+    public function onAttackEntity(Entity $victim, array &$returnedItems): bool
+    {
+        return $this->applyDamage(self::$ATTACK_POINTS);
+    }
+
+    /**
+     * @param array<Item> $returnedItems
+     */
+    public function onDestroyBlock(Block $block, array &$returnedItems): bool
+    {
+        $position = $block->getPosition();
+        $world = $position->getWorld();
+        $area = Math::makeRhombus($position);
+        Utils::autoRefill($block, $position, $world);
+        /** @var Vector3 $pos */
+        foreach ($area as $pos) {
+            $block = $world->getBlock($pos);
+            Utils::autoRefill($block, $pos, $world);
+        }
+        return true;
+    }
 }
