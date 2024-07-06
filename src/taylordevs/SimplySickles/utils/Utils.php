@@ -17,49 +17,25 @@ use pocketmine\world\World;
 
 class Utils {
 	public static function autoRefill(Block $block, Vector3 $postion, World $world) : void {
-		if ($block instanceof Wheat) {
-			$world->setBlock($postion, VanillaBlocks::WHEAT());
-			if ($block->getAge() >= Crops::MAX_AGE) {
-				$world->dropItem(new Vector3(
-					$postion->getX(),
-					$postion->getY(),
-					$postion->getZ()),
-					VanillaItems::WHEAT()
-				);
-			}
-		}
-		if ($block instanceof Potato) {
-			$world->setBlock($postion, VanillaBlocks::POTATOES());
-			if ($block->getAge() >= Crops::MAX_AGE) {
-				$world->dropItem(new Vector3(
-					$postion->getX(),
-					$postion->getY(),
-					$postion->getZ()),
-					VanillaItems::POTATO()->setCount ($count = mt_rand(1,5))
-				);
-			}
-		}
-		if ($block instanceof Carrot) {
-			$world->setBlock($postion, VanillaBlocks::CARROTS());
-			if ($block->getAge() >= Crops::MAX_AGE) {
-				$world->dropItem(new Vector3(
-					$postion->getX(),
-					$postion->getY(),
-					$postion->getZ()),
-					VanillaItems::CARROT()->setCount ($count = mt_rand(1,4))
-				);
-			}
-		}
-		if ($block instanceof Beetroot) {
-			$world->setBlock($postion, VanillaBlocks::BEETROOTS());
-			if ($block->getAge() >= Crops::MAX_AGE) {
-				$world->dropItem(new Vector3(
-					$postion->getX(),
-					$postion->getY(),
-					$postion->getZ()),
-					VanillaItems::BEETROOT()
-				);
-			}
+		$cropTypes = [
+		    Wheat::class => [VanillaBlocks::WHEAT(), VanillaItems::WHEAT(), 1, 1],
+		    Potato::class => [VanillaBlocks::POTATOES(), VanillaItems::POTATO(), 1, 5],
+		    Carrot::class => [VanillaBlocks::CARROTS(), VanillaItems::CARROT(), 1, 4],
+		    Beetroot::class => [VanillaBlocks::BEETROOTS(), VanillaItems::BEETROOT(), 1, 1]
+		];
+		
+		foreach ($cropTypes as $cropClass => [$newBlock, $item, $minCount, $maxCount]) {
+		    if ($block instanceof $cropClass) {
+		        $world->setBlock($postion, $newBlock);
+		        if ($block->getAge() >= Crops::MAX_AGE) {
+		            $count = $minCount === $maxCount ? $minCount : mt_rand($minCount, $maxCount);
+		            $world->dropItem(
+		                new Vector3($postion->getX(), $postion->getY(), $postion->getZ()),
+		                $item->setCount($count)
+		            );
+		        }
+		        break;
+		    }
 		}
 	}
 }
