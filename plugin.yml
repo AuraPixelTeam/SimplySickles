@@ -1,10 +1,10 @@
 name: SimplySickles
-version: 2.0.0
+version: 2.1.0
 api: 5.0.0
 main: taylordevs\SimplySickles\SimplySickles
 author: taylordevs
 description: a plugin for PMMP that simply adds sickles
-website: https://github.com/Taylor-pm-pl/Simply-Sickles
+website: https://aurateam.org
 depend:
   - Customies
 
